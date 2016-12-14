@@ -8,7 +8,7 @@ public class SlidingDoorScript : MonoBehaviour {
 
 	// INSPECTOR SETTINGS
 	[Header("Sliding Door Settings")]
-	[Tooltip("The intial position of the door/window. (Relative to current location of self in Scene)")]
+	[Tooltip("The intial position of the door/window. (Relative to location in Scene)")]
 	public float InitialPosition = 0.0f;
 	[Tooltip("The number of [undefined] units the door/window translates.")]
 	public float TranslatedPosition = 90.0f;
@@ -31,7 +31,7 @@ public class SlidingDoorScript : MonoBehaviour {
 	public int TimesMoveable = 0;
 
 	// PRIVATE SETTINGS
-	private int n = 0; // for "TimesMoveable" loop
+//	private int n = 0; // for "TimesMoveable" loop
 	[HideInInspector] public bool Running = false;
 
 	// DEBUGGING
@@ -42,6 +42,7 @@ public class SlidingDoorScript : MonoBehaviour {
 	public Color HingeColour = Color.cyan;
 
 //	// Defines intial and final translation points
+//	...
 
 //Define an initial and final rotation.
 //	private Quaternion FinalRot, InitialRot;
@@ -68,9 +69,9 @@ public class SlidingDoorScript : MonoBehaviour {
 		float DoorPositY = transform.position.y;
 		float DoorPositZ = transform.position.z;
 
-		float DoorRotateX = transform.position.x;
-//		float DoorRotateY = transform.position.y;
-		float DoorRotateZ = transform.position.z;
+//		float DoorRotateX = transform.position.x;
+////		float DoorRotateY = transform.position.y;
+//		float DoorRotateZ = transform.position.z;
 
 		float DoorScaleX = transform.localScale.x;
 //		float DoorScaleY = transform.localScale.y;
@@ -78,7 +79,7 @@ public class SlidingDoorScript : MonoBehaviour {
 
 		// Creates a placeholder of the hinge's position/rotation
 		Vector3 HingePositCopy = hinge.transform.position;
-		Vector3 HingeRotateCopy = hinge.transform.localEulerAngles;
+//		Vector3 HingeRotateCopy = hinge.transform.localEulerAngles;
 
 		// HINGE LEFT
 		if (HingePosition == PositionOfHinge.Left)
@@ -89,18 +90,18 @@ public class SlidingDoorScript : MonoBehaviour {
 				HingePositCopy.x = (DoorPositX - (DoorScaleX / 2 * CosDeg));
 				HingePositCopy.z = (DoorPositZ + (DoorScaleX / 2 * SinDeg));
 				HingePositCopy.y = DoorPositY;
-		//*TODO*
-				HingeRotateCopy.x = DoorRotateX;
-				HingeRotateCopy.y = -InitialPosition;
-				HingeRotateCopy.z = DoorRotateZ;
+//		//*TODO*
+//				HingeRotateCopy.x = DoorRotateX;
+//				HingeRotateCopy.y = -InitialPosition;
+//				HingeRotateCopy.z = DoorRotateZ;
 			} else {
 				HingePositCopy.x = (DoorPositX + (DoorScaleZ / 2 * SinDeg));
 				HingePositCopy.z = (DoorPositZ + (DoorScaleZ / 2 * CosDeg));
 				HingePositCopy.y = DoorPositY;
-		//*TODO*
-				HingeRotateCopy.x = DoorRotateX;
-				HingeRotateCopy.y = -InitialPosition;
-				HingeRotateCopy.z = DoorRotateZ;
+//		//*TODO*
+//				HingeRotateCopy.x = DoorRotateX;
+//				HingeRotateCopy.y = -InitialPosition;
+//				HingeRotateCopy.z = DoorRotateZ;
 			}
 		}
 
@@ -113,25 +114,25 @@ public class SlidingDoorScript : MonoBehaviour {
 				HingePositCopy.x = (DoorPositX + (DoorScaleX / 2 * CosDeg));
 				HingePositCopy.z = (DoorPositZ - (DoorScaleX / 2 * SinDeg));
 				HingePositCopy.y = DoorPositY;
-		//*TODO*
-				HingeRotateCopy.x = DoorRotateX;
-				HingeRotateCopy.y = -InitialPosition;
-				HingeRotateCopy.z = DoorRotateZ;
+//		//*TODO*
+//				HingeRotateCopy.x = DoorRotateX;
+//				HingeRotateCopy.y = -InitialPosition;
+//				HingeRotateCopy.z = DoorRotateZ;
 			} else {
 				HingePositCopy.x = (DoorPositX - (DoorScaleZ / 2 * SinDeg));
 				HingePositCopy.z = (DoorPositZ - (DoorScaleZ / 2 * CosDeg));
 				HingePositCopy.y = DoorPositY;
-		//*TODO*
-				HingeRotateCopy.x = DoorRotateX;
-				HingeRotateCopy.y = -InitialPosition;
-				HingeRotateCopy.z = DoorRotateZ;
+//		//*TODO*
+//				HingeRotateCopy.x = DoorRotateX;
+//				HingeRotateCopy.y = -InitialPosition;
+//				HingeRotateCopy.z = DoorRotateZ;
 			}
 		}
 
 		// HINGE POSITIONING
 		hinge.transform.position = HingePositCopy;
 		transform.parent = hinge.transform;
-		hinge.transform.localEulerAngles = HingeRotateCopy;
+//		hinge.transform.localEulerAngles = HingeRotateCopy;
 
 		// DEBUGGING
 		if (VisualiseHinge == true) {
